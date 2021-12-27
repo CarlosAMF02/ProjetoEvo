@@ -1,0 +1,10 @@
+.rodape{
+    background-color: #3f51b5;
+    padding: 1.25rem 3.125rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rodape__item{
+    color: #fff;
+}

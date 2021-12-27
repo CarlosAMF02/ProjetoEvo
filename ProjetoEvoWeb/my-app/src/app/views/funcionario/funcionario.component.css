@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+}
+.tabela{
+    padding: 3.125rem 5rem;
+    margin: auto;
+}
+.tabela__item{
+    transition: 0.2s;
+}
+.tabela__item:hover{
+    background-color: #bebebe;
+    color: white;
+}
+.tabela__item-link:hover{
+    cursor: pointer;
+}
+.tabla__item-editar{
+    color: #3f3f3f;
+}
+.tabla__item-editar:hover{
+    background-color: #3f3f3f;
+    color: #fff;
+}
+.tabela__item-remover{
+    color: red;
+}
