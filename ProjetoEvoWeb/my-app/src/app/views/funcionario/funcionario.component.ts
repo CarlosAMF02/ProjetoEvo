@@ -39,6 +39,23 @@ export class FuncionarioComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  verNumerico (val: string) : boolean {
+    return !isNaN(Number(val));
+ }
+  verificador(element: FuncionarioElement):boolean{
+    if(element.rg!='' && element.nome!='' && element.foto!=''){
+      if (this.verNumerico(element.rg)==true){
+        return true
+      } else {
+        alert("O valor de rg é numérico")
+        return false
+      }
+    } else {
+      alert("Preencha todos os campos")
+      return false
+    }
+  }
+
   openDialog(element: FuncionarioElement | null): void {
     const dialogRef = this.dialog.open(FelementDialogComponent, {
       width: '250px',
@@ -60,6 +77,7 @@ export class FuncionarioComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (this.verificador(result)==true){
       if (result !== undefined) {
         if (this.dataSource.map(p => p.id).includes(result.id)) {
           this.funcionarioElementService.editElement(result)
@@ -77,6 +95,8 @@ export class FuncionarioComponent implements OnInit {
               this.table.renderRows();
             });
         }
+      }} else {
+        console.log("Erro no cadastro de dados")
       }
     });
   }

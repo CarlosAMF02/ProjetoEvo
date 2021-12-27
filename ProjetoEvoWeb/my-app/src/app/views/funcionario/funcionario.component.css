@@ -1,6 +1,10 @@
 table {
     width: 100%;
 }
+a{
+    text-decoration: none;
+    color: #3f3f3f;
+}
 .tabela{
     padding: 3.125rem 5rem;
     margin: auto;

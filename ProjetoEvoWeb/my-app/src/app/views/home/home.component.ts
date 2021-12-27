@@ -16,16 +16,28 @@ export class HomeComponent implements OnInit {
   table!: MatTable<any>;
   displayedColumns: string[] = ['nome', 'sigla', 'action'];
   dataSource!: DepartamentoElement[];
-  data!:[]
-  atualizarTabela(){
+  data!: []
+  atualizarTabela() {
     this.dataSource = []
-    this.departamentoElementService.getElements().subscribe(data => {this.dataSource = data})
+    this.departamentoElementService.getElements().subscribe(data => { this.dataSource = data })
   }
   constructor(
     public dialog: MatDialog,
-    private departamentoElementService: DepartamentoElementService){this.atualizarTabela()}
+    private departamentoElementService: DepartamentoElementService) { this.atualizarTabela() }
 
   ngOnInit(): void {
+  }
+
+  verNumerico(val: string): boolean {
+    return !isNaN(Number(val));
+  }
+  verificador(element: DepartamentoElement): boolean {
+    if (element.nome != '' && element.sigla != '') {
+      return true
+    } else {
+      alert("Preencha todos os campos")
+      return false
+    }
   }
 
   openDialog(element: DepartamentoElement | null): void {
@@ -44,23 +56,26 @@ export class HomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        console.log(result);
-        if (this.dataSource.map(p => p.id).includes(result.id)) {
-          this.departamentoElementService.editElement(result)
-            .subscribe((data: DepartamentoElement) => {
-              const index = this.dataSource.findIndex(p => p.id === data.id);
-              this.dataSource[index] = data;
-              this.atualizarTabela();
-              this.table.renderRows();
-            });
-        } else {
-          this.departamentoElementService.createElement(result)
-            .subscribe((data: DepartamentoElement) => {
-              this.dataSource.push(data);
-              this.atualizarTabela();
-              this.table.renderRows();
-            });
+        if (this.verificador(result) == true) {
+          if (this.dataSource.map(p => p.id).includes(result.id)) {
+            this.departamentoElementService.editElement(result)
+              .subscribe((data: DepartamentoElement) => {
+                const index = this.dataSource.findIndex(p => p.id === data.id);
+                this.dataSource[index] = data;
+                this.atualizarTabela();
+                this.table.renderRows();
+              });
+          } else {
+            this.departamentoElementService.createElement(result)
+              .subscribe((data: DepartamentoElement) => {
+                this.dataSource.push(data);
+                this.atualizarTabela();
+                this.table.renderRows();
+              });
+          }
         }
+      } else {
+        console.log("Erro no cadastro de dados")
       }
     });
   }

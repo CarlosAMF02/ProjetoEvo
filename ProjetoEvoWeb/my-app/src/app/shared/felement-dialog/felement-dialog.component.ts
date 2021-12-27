@@ -23,7 +23,6 @@ export class FelementDialogComponent implements OnInit {
       this.isChange = false;
     }
   }
-
   getElement():FuncionarioElement{
     let dados={
       id:this.data.id,
