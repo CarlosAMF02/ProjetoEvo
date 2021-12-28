@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvoApi", "EvoApi\EvoApi.csproj", "{C3390EFC-ED67-4FBC-BB70-F329947FFBFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3390EFC-ED67-4FBC-BB70-F329947FFBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3390EFC-ED67-4FBC-BB70-F329947FFBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3390EFC-ED67-4FBC-BB70-F329947FFBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3390EFC-ED67-4FBC-BB70-F329947FFBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00F9FB03-E9F0-471D-A36A-F935D4DE8007}
+	EndGlobalSection
+EndGlobal
