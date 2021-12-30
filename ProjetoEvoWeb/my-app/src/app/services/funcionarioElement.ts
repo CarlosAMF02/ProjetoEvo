@@ -17,6 +17,10 @@ export class FuncionarioElementService {
     return this.http.get<FuncionarioElement>(`${this.elementApiUrl}/${id}`)
   }
 
+  public getElementDependency(id: number):Observable<any>{
+    return this.http.get<FuncionarioElement>(`${this.elementApiUrl}/departamento/${id}`)
+  }
+
   createElement(element: FuncionarioElement): Observable<any> {
     let funcionario = {
       nome: element.nome,

@@ -26,7 +26,7 @@ export class FuncionarioComponent implements OnInit {
     if ( this.id == null ) {
       this.funcionarioElementService.getElements().subscribe(data => {this.dataSource = data})
     } else {
-      this.funcionarioElementService.getElements().subscribe(data => {this.dataSource = data.filter(f => (f.departamentoId).toString() == this.id)})
+      this.funcionarioElementService.getElementDependency(Number(this.id)).subscribe(data => {this.dataSource = data})
     }
   }
   constructor(
