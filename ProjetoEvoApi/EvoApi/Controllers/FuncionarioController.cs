@@ -26,12 +26,20 @@ namespace EvoApi.Controllers
         [Route("{id:int}")]
         public async Task<ActionResult<Funcionario>> Get(int id)
         {
-            var func = await _context.Funcionarios.FindAsync(id);
+            var func = await _context.Funcionarios.Include(x => x.Departamento).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             if (func == null)
             {
                 return BadRequest("Funcionario not found");
             }
             return Ok(func);
+        }
+
+        [HttpGet]
+        [Route("departamento/{id:int}")]
+        public async Task<ActionResult<List<Funcionario>>> GetByDepartamento([FromServices] DataContext context, int id)
+        {
+            var func = await context.Funcionarios.Include(x => x.Departamento).Where(x => x.DepartamentoId == id).ToListAsync();
+            return func;
         }
 
         [HttpPost]

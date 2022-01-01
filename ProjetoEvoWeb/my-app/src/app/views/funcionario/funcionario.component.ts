@@ -23,11 +23,7 @@ export class FuncionarioComponent implements OnInit {
   id!: string | null | number
   atualizarTabela(){
     this.dataSource = []
-    if ( this.id == null ) {
-      this.funcionarioElementService.getElements().subscribe(data => {this.dataSource = data})
-    } else {
-      this.funcionarioElementService.getElementDependency(Number(this.id)).subscribe(data => {this.dataSource = data})
-    }
+    this.funcionarioElementService.getElementDependency(Number(this.id)).subscribe(data => {this.dataSource = data})
   }
   constructor(
     public dialog: MatDialog,
